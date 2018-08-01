@@ -1,0 +1,41 @@
+package ACBr_PCNComum;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'ACBr - Projeto Cooperar - (http://br.groups.yahoo.com/group/projeto_cooperar_nfe/)'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  ACBr_Diversos;
+
+contains
+  pcnAuxiliar in '..\..\..\Fontes\PCNComum\pcnAuxiliar.pas',
+  pcnConversao in '..\..\..\Fontes\PCNComum\pcnConversao.pas',
+  pcnConsts in '..\..\..\Fontes\PCNComum\pcnConsts.pas',
+  pcnSignature in '..\..\..\Fontes\PCNComum\pcnSignature.pas',
+  pcnGerador in '..\..\..\Fontes\PCNComum\pcnGerador.pas',
+  pcnLeitor in '..\..\..\Fontes\PCNComum\pcnLeitor.pas';
+
+end.

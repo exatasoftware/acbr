@@ -1,0 +1,57 @@
+package ACBr_DFeComum;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'ACBr - Biblioteca com Métodos e Classes em comum a todos Documentos Fiscais Eletrônicos'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl,
+  rtl,
+  designide,
+  inet,
+  soaprtl,
+  ACBr_Integrador,
+  ACBr_OpenSSL,
+  ACBr_TCP,
+  ACBr_PCNComum,
+  ACBr_Diversos,
+  ACBr_Comum,
+  ACBr_synapse,
+  vclactnband,
+  vclx;
+
+contains
+  ACBrDFeConfiguracoes in '..\..\..\Fontes\ACBrDFe\ACBrDFeConfiguracoes.pas',
+  ACBrDFeUtil in '..\..\..\Fontes\ACBrDFe\ACBrDFeUtil.pas',
+  ACBrDFeWebService in '..\..\..\Fontes\ACBrDFe\ACBrDFeWebService.pas',
+  ACBrDFe in '..\..\..\Fontes\ACBrDFe\ACBrDFe.pas',
+  ACBrDFeRegUtil in '..\..\..\Fontes\ACBrDFe\ACBrDFeRegUtil.pas',
+  ACBrDFeException in '..\..\..\Fontes\ACBrDFe\ACBrDFeException.pas',
+  ACBrDFeSSL in '..\..\..\Fontes\ACBrDFe\ACBrDFeSSL.pas',
+  ACBRDFeWinCrypt in '..\..\..\Fontes\ACBrDFe\ACBRDFeWinCrypt.pas',
+  ACBrDFeHttpWinApi in '..\..\..\Fontes\ACBrDFe\ACBrDFeHttpWinApi.pas',
+  ACBrDFeXsMsXml in '..\..\..\Fontes\ACBrDFe\ACBrDFeXsMsXml.pas';
+
+end.
