@@ -172,7 +172,6 @@ begin
                         ARetornoWS.DadosRet.TituloRet.QtdeParcelas          := LJSONObject.AsInteger['parcelsQuantity'];
                         ARetornoWS.DadosRet.TituloRet.QtdePagamentoParcial  := LJSONObject.AsInteger['paidParcelsQuantity'];
                         ARetornoWS.DadosRet.TituloRet.ValorRecebido         := LJSONObject.AsFloat['amountReceived'];
-                        ARetornoWS.DadosRet.TituloRet.ValorMoraJuros        := LJSONObject.AsFloat['interestPercentage'];
                         ARetornoWS.DadosRet.TituloRet.LinhaDig              := LJSONObject.AsString['digitableLine'];
                         if LJSONObject.ValueExists('barCode') then
                           ARetornoWS.DadosRet.TituloRet.CodBarras           := LJSONObject.AsString['barCode']
@@ -245,6 +244,8 @@ begin
                           if EstaVazio(ARetornoWS.DadosRet.TituloRet.EstadoTituloCobranca) then
                            ARetornoWS.DadosRet.TituloRet.EstadoTituloCobranca := LJSONObject.AsString['status'];
                           ARetornoWS.DadosRet.TituloRet.ValorTarifa :=  LJSONObject.AsFloat['settlementDutyValue'];
+                          if ARetornoWS.DadosRet.TituloRet.ValorMoraJuros = 0 then
+                            ARetornoWS.DadosRet.TituloRet.ValorMoraJuros := LJSONObject.AsFloat['interestValue'];
                         end;
                       end;
                       if (LJsonArray.ItemAsJSONObject[nIndiceOBJ].AsJSONArray['writeOffData'].Count > 0) then

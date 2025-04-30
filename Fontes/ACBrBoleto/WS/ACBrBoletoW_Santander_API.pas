@@ -309,7 +309,7 @@ begin
           end;
         toRemessaAlterarSeuNumero :
           begin
-            LJsonObject.AddPair('clientNumber', ATitulo.NumeroDocumento); // seu número ou numero documento
+            LJsonObject.AddPair('clientNumber', ATitulo.SeuNumero);
           end;
         toRemessaAlterarNumeroDiasProtesto:
           begin
@@ -399,10 +399,12 @@ begin
       LJsonObject.AddPair('nsuDate', FormatDateTime('yyyy-mm-dd', Now));
       LJsonObject.AddPair('covenantCode', Boleto.Cedente.Convenio);
       LJsonObject.AddPair('bankNumber', ATitulo.NossoNumero);
-      LJsonObject.AddPair('clientNumber', ATitulo.NumeroDocumento);
+      LJsonObject.AddPair('clientNumber', ATitulo.SeuNumero);
       LJsonObject.AddPair('dueDate', FormatDateTime('yyyy-mm-dd', ATitulo.Vencimento));
       LJsonObject.AddPair('issueDate', FormatDateTime('yyyy-mm-dd', Now));
       LJsonObject.AddPair('nominalValue', StringReplace(FormatFloat('0.00', ATitulo.ValorDocumento), ',', '.', [rfReplaceAll]));
+      if (ATitulo.DataBaixa <> 0) and ((ATitulo.DataBaixa - ATitulo.Vencimento) > 0) then
+        LJsonObject.AddPair('writeOffQuantityDays', IntToStr(trunc(ATitulo.DataBaixa - ATitulo.Vencimento)));
 
       GerarPagador(LJsonObject);
       GerarSacadorAvalista(LJsonObject);
@@ -817,9 +819,9 @@ begin
   end;
 
   if (pos('LIQUIDADO',AnsiUpperCase(LEnvioPrincipal) ) > 0) or
-     (pos('LIQUIDADO',AnsiUpperCase(LEnvioComplementar) ) > 0) or
+     (pos('LIQUIDADO',AnsiUpperCase(LEnvioAuxiliar) ) > 0) or
      (pos('BAIXADO'  ,AnsiUpperCase(LEnvioPrincipal) ) > 0) or
-     (pos('BAIXADO'  ,AnsiUpperCase(LEnvioComplementar) ) > 0)  then
+     (pos('BAIXADO'  ,AnsiUpperCase(LEnvioAuxiliar) ) > 0)  then
   begin
     Boleto.Cedente.CedenteWS.IndicadorPix := False;
     Boleto.Configuracoes.WebService.Filtro.indicadorSituacao := isbBaixado;
